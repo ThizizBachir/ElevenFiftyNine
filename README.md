@@ -1,6 +1,7 @@
 # 🌟 ZEN TSYP Challenge Solution
-
+<p align="center">
 ![logoZen](https://github.com/user-attachments/assets/cd1627b4-41d5-45e5-bd3b-6f3bb4e73a2c)
+</p>
 
 ---
 
@@ -47,9 +48,10 @@ Below is an overview of the system architecture:
 4. **3D Model Generation**: Design clothing in Marvelous Designer and integrate with Blender for rendering.  
 
 ### 🎨 Architecture Diagram
+<p align="center">
 ---![conecept-map](https://github.com/user-attachments/assets/fe936b0c-3f18-44f0-a1ec-92b86394f11b)
 ![diagram](https://github.com/user-attachments/assets/02cb5ad8-8f0d-4e4e-bc65-0b0950114994)
-
+</p>
 
 ## ⚙️ Installation and Setup
 
