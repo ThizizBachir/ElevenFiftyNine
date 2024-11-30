@@ -1,0 +1,11 @@
+flask
+torch
+torchvision
+opencv-python-headless
+numpy
+Pillow
+tqdm    
+requests
+skin-tone-classifier
+deepface
+tf-keras
