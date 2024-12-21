@@ -114,6 +114,42 @@ Skin_attribute_map = {
     "redness": ("Skin_tone", 2),
     "saturation": ("Skin_tone", 3),
 }
+outfit_map = {
+    1: 'outfits\\male\\Casual\\Casual_Weekday.blend',
+    2: 'outfits\\male\\Casual\\Relaxed_Office.blend',
+    3: 'outfits\\male\\Casual\\Skinny_Look.blend',
+    4: 'outfits\\male\\Casual\\Smart_Casual.blend',
+    5: 'outfits\\male\\Casual\\Stylish_Casual.blend',
+    6: 'outfits\\male\\Casual\\Weekend_Warrior.blend',
+    7: 'outfits\\male\\Extra Outfits Pack\\Bomber look.blend',
+    8: 'outfits\\male\\Extra Outfits Pack\\Flight Suit.blend',
+    9: 'outfits\\male\\Extra Outfits Pack\\Golf Day.blend',
+    10: 'outfits\\male\\Extra Outfits Pack\\Lab Tech.blend',
+    11: 'outfits\\male\\Extra Outfits Pack\\On the road.blend',
+    12: 'outfits\\male\\Extra Outfits Pack\\Pirate.blend',
+    13: 'outfits\\male\\Extra Outfits Pack\\Relaxed Fit.blend',
+    14: 'outfits\\male\\Office\\New_Intern.blend',
+    15: 'outfits\\male\\Office\\Open_Suit.blend',
+    16: 'outfits\\male\\Office\\Relaxed_Dresscode.blend',
+    17: 'outfits\\male\\Office\\Stock_Exchange.blend',
+    18: 'outfits\\male\\Office\\Suit_N_Tie.blend',
+    19: 'outfits\\male\\Office\\Summer_Lawyer.blend',
+    20: 'outfits\\male\\Summer\\BBQ_Barry.blend',
+    21: 'outfits\\male\\Summer\\Beach_Day.blend',
+    22: 'outfits\\male\\Summer\\Office_Excursion.blend',
+    23: 'outfits\\male\\Winter\\Frosty_Evening.blend'
+}
+
+footwear_map = {
+    1: 'footwear\\male\\Extra Outfits Pack\\Pirate Boots.blend',
+    2: 'footwear\\male\\Office\\HG_Leather_Dress_Shoe.blend',
+    3: 'footwear\\male\\Office\\HG_Suede_Dress_Shoe.blend',
+    4: 'footwear\\male\\Outdoor\\HG_Garden_Boot_Male.blend',
+    5: 'footwear\\male\\Sneakers\\HG_Leather_Sneakers_Male.blend',
+    6: 'footwear\\male\\Sneakers\\HG_Suede_Sneakers_Male.blend',
+    7: 'footwear\\male\\Sports\\HG_Running_Shoe_1.blend',
+    8: 'footwear\\male\\Sports\\HG_Running_Shoe_2.blend'
+}
 
 # Path to your JSON file
 file_path = r"E:\Download\detailed_body_metrics (2).json"
@@ -122,53 +158,14 @@ file_path = r"E:\Download\detailed_body_metrics (2).json"
 with open(file_path, 'r') as file:
     data = json.load(file)
 
-# Loop through all elements in the JSON, but only process "keys"
-def process_json_body(data, prefix=""):
-    active_object = bpy.context.active_object
-    my_existing_human = Human.from_existing(active_object)
-    livekeys_list=my_existing_human.body.keys
-    for key, value in data.items():
-        # If the value is a dictionary and it's not "keys", continue recursion
-        # Process "keys" dictionary only
-        if key == "keys":
-            for sub_key, sub_value in value.items():
-                if sub_key in Body_attributes:
-                    for item in livekeys_list:
-                        if item.name == sub_key:
-                            item.value =sub_value  # Change the value to the desired number
 
-def process_json_Face(data, prefix=""):
-    active_object = bpy.context.active_object
-    my_existing_human = Human.from_existing(active_object)
-    livekeys_list=my_existing_human.face.keys
-    for key, value in data.items():
-        # If the value is a dictionary and it's not "keys", continue recursion
-        # Process "keys" dictionary only
-        if key == "keys":
-            for sub_key, sub_value in value.items():
-                if sub_key in Face_attributes:
-                    for item in livekeys_list:
-                        if item.name == sub_key:
-                            item.value =sub_value
-                            
-"""def process_json_Face_and_Body(data):
-    active_object = bpy.context.active_object
-    my_existing_human = Human.from_existing(active_object)
-    livekeys_list_face=my_existing_human.face.keys
-    livekeys_list_body=my_existing_human.body.keys
-    for key, value in data.items():
-        # If the value is a dictionary and it's not "keys", continue recursion
-        # Process "keys" dictionary only
-        if key == "keys":
-            for sub_key, sub_value in value.items():
-                if sub_key in Face_attributes:
-                    for item in livekeys_list_face:
-                        if item.name == sub_key:
-                            item.value =sub_value
-                elif sub_key in Body_attributes:
-                    for item in livekeys_list_body:
-                        if item.name == sub_key:
-                            item.value =sub_value"""
+outfit=data['clothing']['outfit']['set']
+footwear=data['clothing']['footwear']['set']
+
+
+
+# Loop through all elements in the JSON, but only process "keys"
+
                             
 def process_json_Face_and_Body(data):
     active_object = bpy.context.active_object
@@ -223,29 +220,16 @@ def process_json_Height(data):
                 
                 
                 
-            
+                
                                
-print("++++-----++++++-------++++----++++++-----++++-----")
 
 
 process_json_Face_and_Body(data)
 process_json_Skin(data)
+process_json_Height(data)
+my_existing_human.clothing.footwear.set(footwear_map[footwear])
+my_existing_human.clothing.outfit.set(outfit_map[outfit])
 
 
 
 
-#process_json(data, prefix="")                
-
-active_object = bpy.context.active_object
-
-
-my_existing_human = Human.from_existing(active_object)
-
-livekeys_list=my_existing_human.body.keys
-
-for item in livekeys_list:
-    print(item.name)
-    if item.name == 'Neck Length':
-        item.value =-1.0  # Change the value to the desired number
-        break
-    
