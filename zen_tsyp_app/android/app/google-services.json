@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "22686388340",
+    "project_id": "zen-challenge",
+    "storage_bucket": "zen-challenge.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:22686388340:android:faa6b0f5916bf95c170121",
+        "android_client_info": {
+          "package_name": "com.example.zen_tsyp_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIafS8lcMaUwgDmFncdmQqPHXp6BRYIwE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
