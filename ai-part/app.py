@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request, render_template
 import os
 import cv2
 from test_segmentation import SapiensSegmentation
+# from face_traits import face_traits
 from body_seg import convert_to_unreal_engine_format, compute_detailed_body_metrics
 from deepface import DeepFace
 import stone
@@ -48,14 +49,13 @@ def analyze_face(image_path):
 
         # Skin Tone Analysis
         stone_result = stone.process(image_path, image_type="color", return_report_image=False)
-        dominant_color = stone_result.get("faces", [{}])[0].get("skin_tone", "#FFFFFF")
+        dominant_color = stone_result.get("faces", [{}])[0].get("dominant_colors")[0].get("color")
         
         skin_tone_value = {
             "#9D7A54": 1.0,  
             "#C2967B": 2.0,  
             "#715541": 3.0   
         }.get(dominant_color.upper(), 1.5)  
-
         redness = stone_result.get("faces", [{}])[0].get("redness", 0.5)
         saturation = stone_result.get("faces", [{}])[0].get("saturation", 0.5)
 
@@ -250,10 +250,11 @@ def process_images():
         body_metrics["skin"]["tone"] = face_results["skin_tone"]
         body_metrics["skin"]["redness"] = face_results["redness"]
         body_metrics["skin"]["saturation"] = face_results["saturation"]
-
+        # face_traits_treat=face_traits(template_output)
         # Complete the JSON structure
-        complete_output = create_complete_output(template_output, body_metrics)
+        # complete_output = create_complete_output(face_traits_treat, body_metrics)
 
+        complete_output = create_complete_output(template_output, body_metrics)
         logging.debug(f"Final JSON Output: {complete_output}")
 
         # Return the combined result as JSON
