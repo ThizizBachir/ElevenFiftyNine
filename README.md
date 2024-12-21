@@ -12,7 +12,7 @@ The ZEN TSYP Challenge is an opportunity to innovate and solve real-world proble
 
 ## 💽 Demo Video
 
-[📄 Demo Link](https://ar5iv.labs.arxiv.org/html/2408.12569)
+[📄 Demo Link](https://drive.google.com/drive/folders/1f1BTWpxKLcc_lVNQEvvR7ZIjDZXeUFtZ?fbclid=IwY2xjawHUJshleHRuA2FlbQIxMAABHSWaoWMj5i_lnarPtROVoswRYPCf3YYWO3VJPQyIraYorSkQHk0tAzXyZQ_aem_1GpmD6s8QDJR4PZzRHzQNQ)
 
 ## 💡 Solution Overview
 
@@ -95,7 +95,7 @@ Below is an overview of the system architecture:
    ```bash
    flutter pub add flutter_3d
    ```
-5. Run the application:
+5. **Run the application**:
    ```bash
    flutter run
    ```
